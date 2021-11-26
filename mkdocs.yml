@@ -1,0 +1,10 @@
+site_name: Joye Zhang Blog
+
+theme:
+  name: material
+
+
+nav:
+  - home: index.md
+  - 博客管理: 博客管理/博客搭建方法.md
+
