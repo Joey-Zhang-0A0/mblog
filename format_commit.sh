@@ -6,4 +6,8 @@ git config user.email "2298667492@qq.com"
 
 git commit
 
+# Push github
 #git push origin main
+
+# Push github page
+#mkdocs gh-deploy
