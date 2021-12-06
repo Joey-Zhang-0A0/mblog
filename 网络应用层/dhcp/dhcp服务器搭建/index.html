@@ -1,0 +1,811 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>网络应用层 - Joye Zhang Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dhcp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Joye Zhang Blog" class="md-header__button md-logo" aria-label="Joye Zhang Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Joye Zhang Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              网络应用层
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Joye Zhang Blog" class="md-nav__button md-logo" aria-label="Joye Zhang Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Joye Zhang Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        博客管理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../github/github%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        github相关
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          网络应用层
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        网络应用层
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dhcp" class="md-nav__link">
+    DHCP服务器搭建
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCP服务器搭建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    配置
+  </a>
+  
+    <nav class="md-nav" aria-label="配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    网络接口配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    服务参数配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option" class="md-nav__link">
+    自定义option
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    服务开启
+  </a>
+  
+    <nav class="md-nav" aria-label="服务开启">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    普通服务开启
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-vlan" class="md-nav__link">
+    dhcp vlan服务测试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp6" class="md-nav__link">
+    DHCP6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    注意
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    错误调试
+  </a>
+  
+    <nav class="md-nav" aria-label="错误调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    日志查询
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    资料
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dhcp" class="md-nav__link">
+    DHCP服务器搭建
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCP服务器搭建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    配置
+  </a>
+  
+    <nav class="md-nav" aria-label="配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    网络接口配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    服务参数配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option" class="md-nav__link">
+    自定义option
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    服务开启
+  </a>
+  
+    <nav class="md-nav" aria-label="服务开启">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    普通服务开启
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-vlan" class="md-nav__link">
+    dhcp vlan服务测试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp6" class="md-nav__link">
+    DHCP6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    注意
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    错误调试
+  </a>
+  
+    <nav class="md-nav" aria-label="错误调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    日志查询
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    资料
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>网络应用层</h1>
+                
+                <blockquote>
+<p>本文介绍在Ubuntu主机上搭建dhcp服务器</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>版本号</th>
+<th align="left">作者</th>
+<th>修改时间</th>
+<th>修改说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td align="left">Joey zhang 2298667492@qq.com</td>
+<td>2021-12-06</td>
+<td>初始版本</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dhcp">DHCP服务器搭建</h2>
+<h3 id="_1">安装</h3>
+<pre><code class="language-shell">sudo apt install isc-dhcp-server
+</code></pre>
+<h3 id="_2">配置</h3>
+<h4 id="_3">网络接口配置</h4>
+<pre><code class="language-shell">sudo vim /etc/default/isc-dhcp-server
+
+
+# Defaults for isc-dhcp-server initscript
+# sourced by /etc/init.d/isc-dhcp-server       # dhcp服务启动脚本
+# installed at /etc/default/isc-dhcp-server by the maintainer scripts  # 服务启动参数配置脚本
+
+#
+# This is a POSIX shell fragment
+#
+
+# Path to dhcpd's config file (default: /etc/dhcp/dhcpd.conf).
+#DHCPD_CONF=/etc/dhcp/dhcpd.conf  # 服务配置文件脚本路径
+
+# Path to dhcpd's PID file (default: /var/run/dhcpd.pid).
+#DHCPD_PID=/var/run/dhcpd.pid   # 记录dhcp服务pid文件路径
+
+# Additional options to start dhcpd with.
+#   Don't use options -cf or -pf here; use DHCPD_CONF/ DHCPD_PID instead
+#OPTIONS=&quot;&quot;                     # 启动参数选项
+
+# On what interfaces should the DHCP server (dhcpd) serve DHCP requests?
+#   Separate multiple interfaces with spaces, e.g. &quot;eth0 eth1&quot;.
+INTERFACES=&quot;enp4s0&quot;
+</code></pre>
+<p>配置文件中的 INTERFACES="enp4s0"， enp4s0为实际网络接口</p>
+<h4 id="_4">服务参数配置</h4>
+<pre><code class="language-shell">sudo vim /etc/dhcp/dhcpd.conf
+</code></pre>
+<pre><code class="language-shell"># A slightly different configuration for an internal subnet.
+subnet 192.168.122.0 netmask 255.255.255.0 {
+  range 192.168.122.2 192.168.122.30;
+  option domain-name-servers ns1.internal.example.org;
+  option domain-name &quot;internal.example.org&quot;;
+  option subnet-mask 255.255.255.0;
+  option routers 192.168.122.89;
+  option broadcast-address 192.168.122.31;
+  default-lease-time 600;
+  max-lease-time 7200;
+}
+</code></pre>
+<h4 id="option">自定义option</h4>
+<p>有时需要自定义一些option来满足客户端请求。</p>
+<p>下面定义了两个自定义的option代码分别为132和133，且都是字符类型。</p>
+<pre><code class="language-shell">option vlan_id code 132 = string;
+option vlan_pri code 133 = string;
+
+subnet 192.168.122.0 netmask 255.255.255.0 {
+  range 192.168.122.127 192.168.122.128;
+  option domain-name-servers ns1.internal.example.org;
+  option domain-name &quot;internal.example.org&quot;;
+  option subnet-mask 255.255.255.0;
+  option routers 192.168.122.89;
+  option broadcast-address 192.168.122.31;
+  option vlan_id &quot;1&quot;;
+  option vlan_pri &quot;3&quot;;
+  default-lease-time 600;
+  max-lease-time 7200;
+}
+</code></pre>
+<h3 id="_5">服务开启</h3>
+<h4 id="_6">普通服务开启</h4>
+<p>开启服务</p>
+<pre><code class="language-shell">sudo service isc-dhcp-server restart
+</code></pre>
+<p>确认开启</p>
+<pre><code class="language-shell">ps -axu | grep dhcp
+
+dhcpd -user dhcpd -group dhcpd -f -4 -pf /run/dhcp-server/dhcpd.pid -cf /etc/dhcp/dhcpd.conf enp4s0
+</code></pre>
+<p>关闭服务</p>
+<pre><code class="language-shelll">sudo service isc-dhcp-server stop
+</code></pre>
+<h4 id="dhcp-vlan">dhcp vlan服务测试</h4>
+<p>1、主机上先开启vlan节点，设置ip和出去的实际网络接口相同</p>
+<pre><code class="language-shell">sudo vconfig add enp4s0 99
+sudo ifconfig enp4s0.99 192.168.122.89
+</code></pre>
+<p>2、修改服务器配置</p>
+<ul>
+<li>指定dhcp启动到固定的网络接口, vlan网段下的enp4s0.99的服务不会开启。注释掉 /etc/default/isc-dhcp-server 中的INTERFACES这一行。这一步是关键，否则服务器只会开启在enp4s0上</li>
+</ul>
+<pre><code class="language-shell">#INTERFACES=&quot;enp4s0&quot;
+INTERFACES=&quot;enp4s0.99&quot;
+</code></pre>
+<ul>
+<li>发送包含vlan id和vlan priority的自定义option给客户端， /etc/dhcp/dhcpd.conf 修改其中配置，在原有的配置上加上如下配置。</li>
+</ul>
+<pre><code class="language-shell">option vlan_id code 132 = string; # option
+option vlan_pri code 133 = string; # option
+
+subnet 192.168.122.0 netmask 255.255.255.0 {
+option vlan_id &quot;99&quot;;
+option vlan_pri &quot;3&quot;;
+}
+</code></pre>
+<p>3、启动服务。</p>
+<pre><code class="language-shell">sudo service isc-dhcp-server restart
+</code></pre>
+<h3 id="dhcp6">DHCP6</h3>
+<ul>
+<li>创建 <strong>/etc/dhcp/dhcpd6.conf</strong> 作为配置文件：</li>
+</ul>
+<pre><code class="language-shell"># sudo vim /etc/dhcp/dhcpd6.conf
+default-lease-time 600;
+max-lease-time 7200;
+log-facility local7;
+subnet6 2001:db8:1:1::/64 {
+        # Range for clients
+        range6 2001:db8:1:1::129 2001:db8:1:1::254;
+
+        # Range for clients requesting a temporary address
+        range6 2001:db8:1:1::/64 temporary;
+
+        # Additional options
+        option dhcp6.name-servers fec0:0:0:1::1;
+        option dhcp6.domain-search &quot;domain.example&quot;;
+
+        # Prefix range for delegation to sub-routers
+        prefix6 2001:db8:1:100:: 2001:db8:1:f00::/56;
+
+        # Example for a fixed host address
+        host specialclient {
+                host-identifier option dhcp6.client-id 00:01:00:01:4a:1f:ba:e3:60:b9:1f:01:23:45;
+                fixed-address6 2001:db8:1:1::127;
+        }
+}
+</code></pre>
+<ul>
+<li>根据提示创建如下文件</li>
+</ul>
+<pre><code class="language-shell">sudo touch /var/lib/dhcp/dhcpd6.leases
+</code></pre>
+<ul>
+<li>配置网卡静态ipv6地址，需要和上面配置文件中的subnet6相同子网。</li>
+</ul>
+<pre><code class="language-shell">sudo ifconfig enx000ec6a1f188 inet6 add 2001:db8:1:1::1/64
+</code></pre>
+<ul>
+<li>启动到指定网卡上</li>
+</ul>
+<pre><code class="language-shell">sudo dhcpd -6 -cf /etc/dhcp/dhcpd6.conf enx000ec6a1f188
+</code></pre>
+<ul>
+<li>如果设备无法ping通，则设备上需要设置如下路由。（isc ipv6 dhcp serve好像不会下发网关）</li>
+</ul>
+<pre><code class="language-shell"># 设备上添加路由
+iproute add 2001:db8:1:1::/64 dev eth0
+
+# 设备上添加ipv6默认网关
+route -A inet6 add ::/0 gw 2001:db8:1:1::1
+</code></pre>
+<p>查看ipv6网关路由</p>
+<pre><code class="language-shell">route -A inet6
+</code></pre>
+<h2 id="_7">注意</h2>
+<p>在结束调试后记得将相关服务全部关闭，避免影响到原本的网络环境。</p>
+<pre><code class="language-shell">ps -aux | grep dhcp
+sudo kill &lt;pid&gt;
+</code></pre>
+<h2 id="_8">错误调试</h2>
+<h3 id="_9">日志查询</h3>
+<pre><code class="language-shell">vim /var/log/syslog
+</code></pre>
+<h2 id="_10">资料</h2>
+<p>感谢以下链接对本文章的帮助！</p>
+<p><a href="https://linzyjx.com/archives/20.html">ipv4 dhcp server搭建</a></p>
+<p><a href="https://blog.csdn.net/rainforest_c/article/details/71172738">ipv6 dhcp server搭建</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../../github/github%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="md-footer__link md-footer__link--prev" aria-label="Previous: github相关" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              github相关
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="../../../js/baidu-tongji.js"></script>
+      
+    
+  </body>
+</html>
