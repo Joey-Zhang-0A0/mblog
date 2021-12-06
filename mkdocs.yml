@@ -2,13 +2,19 @@ site_name: Joye Zhang Blog
 
 theme:
   name: material
+  language: 'zh'
 
 extra_javascript:
   - 'js/baidu-tongji.js'
+
+extra:
+  search:
+    language: 'zh'
 
 nav:
   - home: index.md
   - 博客管理: 博客管理/博客搭建方法.md
   - github相关: github/github遇到的问题.md
-  - 网络应用层: 网络应用层/dhcp/dhcp服务器搭建.md
+  - 网络应用层:
+    - DHCP: 网络应用层/dhcp/dhcp服务器搭建.md
 
