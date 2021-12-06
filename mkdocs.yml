@@ -9,4 +9,6 @@ extra_javascript:
 nav:
   - home: index.md
   - 博客管理: 博客管理/博客搭建方法.md
+  - github相关: github/github遇到的问题.md
+  - 网络应用层: 网络应用层/dhcp/dhcp服务器搭建.md
 
