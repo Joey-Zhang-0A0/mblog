@@ -87,6 +87,16 @@ Hi pidansolo! You've successfully authenticated, but GitHub does not provide she
 
 
 
+### 问题2 - 下载生成补丁文件
+
+直接在commit 链接后面加上.patch 即可，如下。
+
+```url
+https://github.com/bluekitchen/btstack/commit/0f2a810173d1d70943d1c915bffd6f9b1171e8f6.patch
+```
+
+
+
 
 
 ## 资料

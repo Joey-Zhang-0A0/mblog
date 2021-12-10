@@ -2,7 +2,34 @@ site_name: Joye Zhang Blog
 
 theme:
   name: material
+
+  palette:
+    - media: "(prefers-color-scheme: light)" #
+      scheme: default
+      primary: deep orange
+      accent: pink
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)" #
+      scheme: slate
+      primary: deep orange
+      accent: pink
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
+
+  font: false
+
   language: 'zh'
+
+  features:
+    - navigation.instant
+    - navigation.tracking
+    #- navigation.tabs
+    #- navigation.sections
+    - search.highlight
+    - header.autohide
 
 extra_javascript:
   - 'js/baidu-tongji.js'
