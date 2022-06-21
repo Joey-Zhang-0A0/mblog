@@ -4,9 +4,10 @@
 
 
 
-| 版本号 | 作者                         | 修改时间   | 修改说明 |
-| ------ | :--------------------------- | ---------- | -------- |
-| v1.0   | Joey zhang 2298667492@qq.com | 2021-11-26 | 初始版本 |
+| 版本号 | 作者                         | 修改时间   | 修改说明            |
+| ------ | :--------------------------- | ---------- | ------------------- |
+| v1.0   | Joey zhang 2298667492@qq.com | 2021-11-26 | 初始版本            |
+| v1.1   | Joey zhang 2298667492@qq.com | 2022-06-21 | 更换ssh key类型为ec |
 
 
 
@@ -29,15 +30,17 @@ Hi pidansolo! You've successfully authenticated, but GitHub does not provide she
 
 1、先按照 github 官网上的教程新加一个 [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
+[2022-06-21] 官方对 ssh key 类型做了更新，要求全部用成圆锥曲线密码学标准。[here](https://github.blog/2021-09-01-improving-git-protocol-security-github/)
+
 ```shell
-zy@zy:sshkey$ ssh-keygen -t rsa -b 4096 -C "2298667492@qq.com"
+zy@zy:sshkey$ ssh-keygen -t ed25519 -C "2298667492@qq.com"
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/zy/.ssh/id_rsa): ./joey_github_sshkey
+Enter file in which to save the key (/home/zy/.ssh/id_rsa): ./joey_github_sshkey_new
 
 zy@zy:sshkey$ ls -lt
 总用量 8
--rw------- 1 zy zy 3243 11月 26 14:42 joey_github_sshkey
--rw-r--r-- 1 zy zy  743 11月 26 14:42 joey_github_sshkey.pub
+-rw------- 1 zy zy  411 6月  21 16:58 joey_github_sshkey_new
+-rw-r--r-- 1 zy zy   99 6月  21 16:58 joey_github_sshkey_new.pub
 ```
 
 2、修改配置文件 /etc/ssh/ssh_config 配置文件，如下
@@ -51,7 +54,7 @@ Host pidansolo.github.com
 Host Joey-Zhang-0A0.github.com
 	User git
 	Hostname github.com
-	IdentityFile /media/zy/gs_work/myblog/joey_github/sshkey/joey_github_sshkey
+	IdentityFile /media/zy/gs_work/myblog/joey_github/sshkey/joey_github_sshkey_new
 ```
 
 3、重启 ssh 服务，并加上新的 key 
@@ -85,6 +88,22 @@ Hi pidansolo! You've successfully authenticated, but GitHub does not provide she
 
 5、连接正常后基本就可以用了。如果不能用可能和仓库创建有关，github添加新的ssh key后再创建仓库即可。
 
+6、使用 ECDSA 和 Ed25519 是基于[椭圆曲线密码学](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography)的较新标准。后会出现 ssh-add 失败的问题
+
+```shell
+zy@zy:mblog$ ssh-add /media/zy/gs_work/myblog/joey_github/sshkey/joey_github_sshkey_new
+Could not add identity "/media/zy/gs_work/myblog/joey_github/sshkey/joey_github_sshkey_new": communication with agent failed
+```
+
+对此官方也有解决方法，[here](https://docs.github.com/cn/authentication/troubleshooting-ssh/error-agent-admitted-failure-to-sign)
+
+```shell
+eval "$(ssh-agent -s)"
+ssh-add /media/zy/gs_work/myblog/joey_github/sshkey/joey_github_sshkey_new
+```
+
+
+
 
 
 ### 问题2 - 下载生成补丁文件
@@ -102,3 +121,5 @@ https://github.com/bluekitchen/btstack/commit/0f2a810173d1d70943d1c915bffd6f9b11
 ## 资料
 
 感谢以下链接对本文章的帮助！
+
+- [[1] github官方对ssh问题的解决方法](https://docs.github.com/cn/authentication/troubleshooting-ssh/error-agent-admitted-failure-to-sign)
