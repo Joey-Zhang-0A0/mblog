@@ -161,6 +161,8 @@ option vlan_pri "3";
 
 ```shell
 sudo service isc-dhcp-server restart
+# 或者
+sudo dhcpd -4 -cf /etc/dhcp/dhcpd.conf
 ```
 
 

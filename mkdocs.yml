@@ -41,6 +41,7 @@ extra:
 nav:
   - home: index.md
   - 博客管理: 博客管理/博客搭建方法.md
+  - 面试相关: 面试相关/面试模板.md
   - github相关: github/github遇到的问题.md
   - 网络应用层:
     - DHCP: 网络应用层/dhcp/dhcp服务器搭建.md
